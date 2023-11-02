@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>闯关题分数排行榜</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 400px;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>闯关题分数排行榜</h1>
+    <table id="leaderboard">
+        <tr>
+            <th>Rank</th>
+            <th>姓名</th>
+            <th>学号</th>
+            <th>总得分数</th>
+        </tr>
+    </table>
+
+    <script>
+        // 模拟数据
+        var leaderboardData = [
+            { name: "比天气", studentId: "001", score: 693 },
+            { name: "徐圣彼", studentId: "002", score: 632 },
+            { name: "椰子油", studentId: "003", score: 630 },
+            { name: "volmont", studentId: "004", score: 617 }
+        ];
+
+        // 根据得分排序排行榜数据
+        leaderboardData.sort(function(a, b) {
+            return b.score - a.score;
+        });
+
+        // 动态生成排行榜表格
+        var leaderboardTable = document.getElementById("leaderboard");
+        for (var i = 0; i < leaderboardData.length; i++) {
+            var row = leaderboardTable.insertRow(i + 1);
+            var rankCell = row.insertCell(0);
+            var nameCell = row.insertCell(1);
+            var studentIdCell = row.insertCell(2);
+            var scoreCell = row.insertCell(3);
+
+            rankCell.innerHTML = i + 1;
+            nameCell.innerHTML = leaderboardData[i].name;
+            studentIdCell.innerHTML = leaderboardData[i].studentId;
+            scoreCell.innerHTML = leaderboardData[i].score;
+        }
+    </script>
+</body>
+</html>
